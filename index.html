@@ -473,6 +473,14 @@ details.more .kv{margin-top:4px}
 br.m{display:none}
 @media (max-width:600px){ br.m{display:inline} .dedication{font-size:.95rem;line-height:2.05} .dedication p{word-break:keep-all} }
 
+/* 홈 화면·즐겨찾기 안내 */
+.keep{max-width:40em;margin:22px auto 0;text-align:left;background:var(--card);border:1px solid var(--line-2);border-radius:14px;padding:14px 18px;font-size:.92rem;color:var(--ink-2);line-height:1.8}
+.keep p{margin:0 0 6px}
+.keep b{color:var(--ink);font-weight:600}
+.keep ul{margin:0;padding-left:1.1em}
+.keep li{margin:2px 0}
+@media print{.keep{display:none}}
+
 </style>
 </head>
 <body>
@@ -499,6 +507,14 @@ br.m{display:none}
   </div>
   <p class="howto">쓰는 법은 세 단계입니다. <a href="#timeline">타임라인</a>에서 구간별 할 일을 체크하고, <a href="#dict">항목 사전</a>에서 수준을 고르거나 실제 견적을 적으면, <a href="#budget">예산</a>이 합산됩니다. 생각나는 건 <a href="#notes">메모장</a>에.</p>
   <p class="by">체크·선택·금액·메모는 이 기기의 브라우저에만 저장되고 어디로도 전송되지 않습니다. 오른쪽 아래 저장 버튼을 누르면 확실히 남고, 다른 기기로 옮길 때는 메모장의 백업 코드를 쓰세요.</p>
+  <div class="keep">
+    <p><b>늘 같은 곳에서 여세요.</b> 저장은 연 브라우저에 묶이니, 처음 한 번만 아래처럼 해 두면 결혼식까지 이어집니다.</p>
+    <ul>
+      <li><b>아이폰</b> 카톡에서 열렸다면 오른쪽 아래 ··· → Safari로 열기. Safari에서 아래 가운데 공유 버튼(네모에 화살표) → <b>홈 화면에 추가</b>.</li>
+      <li><b>안드로이드</b> 카톡에서 열렸다면 오른쪽 위 ⋮ → 다른 브라우저로 열기. Chrome에서 오른쪽 위 ⋮ → <b>홈 화면에 추가</b>.</li>
+      <li><b>PC</b> 주소창 옆 별표를 누르거나 <b>Ctrl+D</b>(맥은 <b>⌘+D</b>)로 즐겨찾기. 같은 브라우저로만 열면 됩니다.</li>
+    </ul>
+  </div>
 </div></header>
 
 <main>
