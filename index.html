@@ -93,7 +93,7 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
 :root[data-theme="dark"] .nav{background:rgba(27,25,22,.9)}
 .nav .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-block:8px}
 .nav .wrap::-webkit-scrollbar{display:none}
-.nav a{flex:none;font-size:.86rem;color:var(--ink-2);text-decoration:none;padding:6px 10px;border-radius:999px;white-space:nowrap}
+.nav a{flex:none;font-size:.86rem;color:var(--ink-2);text-decoration:none;padding:6px 10px;border-radius:999px;white-space:nowrap;transition:background-color .25s,color .25s}
 .nav a:hover,.nav a:focus-visible{background:var(--paper-2);color:var(--ink)}
 .nav a.cur{background:var(--ink);color:var(--paper)}
 
@@ -188,7 +188,7 @@ table.tbl.compact{min-width:0}
 .now-card .empty{color:var(--ink-2);margin:0}
 .progress{margin:18px 0 0}
 .progress .bar{height:6px;border-radius:999px;background:var(--line-2);overflow:hidden}
-.progress .fill{height:100%;background:linear-gradient(90deg,#CDB68A,var(--gold));width:0;transition:width .4s ease}
+.progress .fill{height:100%;background:linear-gradient(90deg,#CDB68A,var(--gold));width:0;transition:width .7s cubic-bezier(.22,.7,.2,1)}
 .progress .pt{display:flex;justify-content:space-between;font-size:.85rem;color:var(--ink-2);margin-top:6px;font-variant-numeric:tabular-nums}
 
 /* 타임라인 — 청실홍실 레일 */
@@ -214,7 +214,7 @@ table.tbl.compact{min-width:0}
 .task{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line-2);cursor:pointer;position:relative}
 .task:last-child{border-bottom:0}
 .task input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
-.task .box{flex:none;width:20px;height:20px;border:1.5px solid var(--ink-2);border-radius:5px;margin-top:6px;position:relative;background:var(--card)}
+.task .box{flex:none;width:20px;height:20px;border:1.5px solid var(--ink-2);border-radius:5px;margin-top:6px;position:relative;background:var(--card);transition:border-color .2s,background-color .2s}
 .task input:focus-visible + .box{outline:2px solid var(--blue);outline-offset:2px}
 .task input:checked + .box{border-color:var(--gold)}
 .task input:checked + .box::after{content:"";position:absolute;inset:4px;border-radius:50%;background:var(--gold)}
@@ -274,7 +274,9 @@ ul.save li{margin:.3em 0}
 .tier{border:1px solid var(--line);border-radius:12px;padding:12px 14px 14px;background:var(--card);cursor:pointer;text-align:left;font:inherit;color:inherit;display:block;width:100%;line-height:1.55;position:relative;-webkit-appearance:none;appearance:none;margin:0}
 .tier .tin{display:grid;gap:3px;align-content:start}
 .tier.t2{border-top:2px solid var(--gold)}
+.tier{transition:border-color .2s,box-shadow .2s,transform .15s,background-color .2s}
 .tier:hover{border-color:var(--ink-3)}
+.tier:active{transform:scale(.985)}
 .tier.on{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
 .tier .stage{font-size:.78rem;color:var(--ink-2);letter-spacing:.02em}
 .tier.on .stage{color:var(--ink);font-weight:600}
@@ -293,7 +295,8 @@ ul.save li{margin:.3em 0}
 .src{font-size:.78rem;color:var(--ink-3);margin:0;line-height:1.6}
 .src a{color:var(--ink-3)}
 .toolbar{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;align-items:center}
-.btn{font:inherit;font-size:.88rem;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;min-height:38px}
+.btn{font:inherit;font-size:.88rem;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;min-height:38px;transition:border-color .2s,background-color .2s,transform .12s}
+.btn:active{transform:scale(.97)}
 .btn:hover{border-color:var(--ink-3)}
 .btn.primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .btn.danger{color:var(--red)}
@@ -496,6 +499,29 @@ table.cases td.first{min-width:170px}
 }
 @media print{table.tbl.form,#cue-table table{min-width:0}}
 table.tbl.form td:first-child,table.tbl.form th:first-child{white-space:nowrap;min-width:120px}
+
+/* 모션 폴리시 */
+button,a,summary,label,.tier{-webkit-tap-highlight-color:transparent}
+.task input:checked + .box::after{animation:pop .28s cubic-bezier(.3,1.4,.5,1)}
+@keyframes pop{0%{transform:scale(.2);opacity:0}70%{transform:scale(1.15);opacity:1}100%{transform:scale(1)}}
+.task .txt{transition:color .2s}
+.task input:checked ~ .txt b{color:var(--ink-2)}
+.chip{transition:background-color .25s,color .25s}
+.gfilter button{transition:background-color .2s,color .2s,border-color .2s,transform .12s}
+.gfilter button:active{transform:scale(.96)}
+.chev{transition:transform .28s cubic-bezier(.22,.7,.2,1)}
+details.item summary .name{transition:color .2s}
+.savepill{transition:transform .3s cubic-bezier(.22,.7,.2,1),opacity .3s,box-shadow .3s}
+.savepill.hide{transform:translateY(140%);opacity:0;pointer-events:none}
+.savepill.saved{box-shadow:0 0 0 4px var(--gold-soft),var(--shadow)}
+.savepill .btn.primary{transition:transform .12s,background-color .2s}
+.savepill .btn.primary:active{transform:scale(.95)}
+.mine input,.btable input,#memo,#restore-code{transition:border-color .2s,box-shadow .2s}
+.mine input:focus,.btable input:focus{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-soft)}
+.og,.layer,.phase.current,.memo-card,.budget{transition:box-shadow .3s}
+.og:hover{box-shadow:0 6px 20px rgba(60,40,10,.06)}
+.num{font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion: reduce){.savepill.hide{transform:none;opacity:1;pointer-events:auto}}
 
 </style>
 </head>
@@ -2343,6 +2369,7 @@ function save(manual){
 function queueSave(){ clearTimeout(saveTimer); saveTimer=setTimeout(function(){save(false)},600); }
 function fmtTime(ts){ var d=new Date(ts); return (d.getHours()<10?'0':'')+d.getHours()+':'+(d.getMinutes()<10?'0':'')+d.getMinutes(); }
 function showSaved(manual, ok){
+  var pill=$('#savepill'); if(pill&&manual&&ok){ pill.classList.add('saved'); setTimeout(function(){ pill.classList.remove('saved'); }, 900); }
   var els=$$('[data-save-status]');
   var msg = !ok ? '이 브라우저는 저장을 막아 두었습니다(사생활 보호 모드 등). 백업 코드로 복사해 두세요.'
           : manual ? '저장했습니다 · '+fmtTime(state.savedAt) : '자동 저장 · '+fmtTime(state.savedAt);
@@ -2396,12 +2423,16 @@ function renderPhaseNow(){
 
 /* ---- 지금 할 일 ---- */
 function phaseProgress(p){ var tot=0,dn=0; p.tasks.forEach(function(t){ tot++; if(state.done[p.id+':'+t.id]) dn++; }); return {done:dn,total:tot,pct: tot?Math.round(dn/tot*100):0}; }
-function progressHTML(label,r,cls){ return '<div class="progress'+(cls?' '+cls:'')+'"><div class="bar"><div class="fill" style="width:'+r.pct+'%"></div></div><div class="pt"><span>'+esc(label)+'</span><span>'+r.done+' / '+r.total+' 완료 ('+r.pct+'%)</span></div></div>'; }
+function progressHTML(label,r,cls){ return '<div class="progress'+(cls?' '+cls:'')+'"><div class="bar"><div class="fill" style="width:0%" data-w="'+r.pct+'"></div></div><div class="pt"><span>'+esc(label)+'</span><span>'+r.done+' / '+r.total+' 완료 ('+r.pct+'%)</span></div></div>'; }
+function settleFills(){ var fs=$$('.progress .fill[data-w]'); if(!fs.length) return; requestAnimationFrame(function(){ requestAnimationFrame(function(){ fs.forEach(function(f){ f.style.width=f.getAttribute('data-w')+'%'; f.removeAttribute('data-w'); }); }); }); }
 function renderProgress(){
   var tot=0,dn=0;
   D.phases.forEach(function(p){ var r=phaseProgress(p); tot+=r.total; dn+=r.done;
     var el=$('#ph-'+p.id+' .progress'); if(el){ el.querySelector('.fill').style.width=r.pct+'%'; el.querySelector('.pt span:last-child').textContent=r.done+' / '+r.total+' 완료 ('+r.pct+'%)'; } });
-  var all=$('#progress-all'); if(all){ var pct=tot?Math.round(dn/tot*100):0; all.innerHTML='<div class="bar"><div class="fill" style="width:'+pct+'%"></div></div><div class="pt"><span>전체 진행률</span><span>'+dn+' / '+tot+' 완료 ('+pct+'%)</span></div>'; }
+  var all=$('#progress-all'); if(all){ var pct=tot?Math.round(dn/tot*100):0; var f=all.querySelector('.fill');
+    if(f){ f.style.width=pct+'%'; var sp=all.querySelector('.pt span:last-child'); if(sp) sp.textContent=dn+' / '+tot+' 완료 ('+pct+'%)'; }
+    else { all.innerHTML='<div class="bar"><div class="fill" style="width:0%" data-w="'+pct+'"></div></div><div class="pt"><span>전체 진행률</span><span>'+dn+' / '+tot+' 완료 ('+pct+'%)</span></div>'; } }
+  settleFills();
 }
 function taskHTML(pid,t,badge){
   var id=pid+':'+t.id, on=!!state.done[id];
@@ -2517,10 +2548,10 @@ function fmtExact(n){ return man(n)+'원'; }
 function renderBudgetTotals(){
   var t=budgetTotals(), has=t.myCount>0;
   var mainTxt = has ? fmtExact(t.my) : '0원';
-  $('#budget-total').textContent=mainTxt;
+  tweenMoney($('#budget-total'), has?t.my:0, mainTxt);
   var lab=$('#budget-label'); if(lab) lab.textContent = has ? '내가 적은 금액 합계 ('+t.myCount+'개 항목, 살 집 제외)' : '내가 적은 금액 합계 (살 집 제외)';
   $('#budget-sub').textContent = has ? '직접 적은 금액 '+t.myCount+'개만 더했습니다. 아직 안 적은 항목은 들어 있지 않습니다. 참고로 고른 단계의 기준 금액을 모두 더하면 '+fmtCost([t.lo,t.hi])+'입니다.' : '아직 적은 금액이 없습니다. 아래 표나 항목 카드에 실제 견적을 적으면 적은 것만 더해 올라갑니다. 참고로 고른 단계의 기준 금액을 모두 더하면 '+fmtCost([t.lo,t.hi])+'입니다.';
-  var mb=$('#minibar-total'); if(mb) mb.textContent=mainTxt;
+  var mb=$('#minibar-total'); if(mb) tweenMoney(mb, has?t.my:0, mainTxt);
   var mbl=$('#minibar-label'); if(mbl) mbl.textContent = '적은 금액 합계';
   var sum=$('#budget-sum'); if(sum) sum.innerHTML='<td>합계</td><td class="num">'+esc(fmtCost([t.lo,t.hi]))+'<span class="tname"> 기준</span></td><td class="num" colspan="2">'+(has?esc(fmtExact(t.my))+' <span class="tname">(적은 금액 '+t.myCount+'개만)</span>':'<span class="tname">적은 금액 없음</span>')+'</td>';
   $('#scen').innerHTML=['가장 아끼면','모두 보통이면','모두 아낌없이면'].map(function(n,k){return '<div class="s t'+k+'"><b>'+esc(n)+'</b><span class="v">'+esc(fmtCost(t.sc[k]))+'</span></div>'}).join('');
@@ -2712,6 +2743,45 @@ function setupXlsxSave(xl){
     });
   }).catch(function(){});
 }
+
+/* ---- 모션: 숫자 카운트업, 펼침/접힘, 폰 스크롤 중 저장 알약 숨김 (동작 줄이기 설정이면 전부 즉시 적용) ---- */
+var MOTION = !REDUCED && typeof requestAnimationFrame==='function';
+function tweenMoney(el, target, finalText){
+  if(!el) return;
+  var from = +(el.getAttribute('data-v')||0); el.setAttribute('data-v', target);
+  if(!MOTION || from===target || !isFinite(from)){ el.textContent=finalText; return; }
+  var t0=performance.now(), dur=Math.min(650, 300+Math.abs(target-from)/40);
+  if(el._tw) cancelAnimationFrame(el._tw);
+  (function step(now){ var k=Math.min(1,(now-t0)/dur), e=1-Math.pow(1-k,3), v=from+(target-from)*e;
+    el.textContent = k<1 ? man(v)+'원' : finalText; if(k<1) el._tw=requestAnimationFrame(step); else el._tw=null; })(t0);
+}
+document.addEventListener('click', function(e){
+  var s=e.target.closest('summary'); if(!s) return; var d=s.parentElement; if(!d||d.tagName!=='DETAILS') return;
+  if(!MOTION || typeof d.animate!=='function') return;
+  if(e.target.closest('a,button,input,label')) return;
+  var body=s.nextElementSibling; if(!body) return;
+  e.preventDefault();
+  if(d._anim){ d._anim.cancel(); d._anim=null; body.style.overflow=''; }
+  if(!d.open){
+    d.open=true; var h=body.scrollHeight; body.style.overflow='hidden';
+    d._anim=body.animate([{height:'0px',opacity:0,transform:'translateY(-4px)'},{height:h+'px',opacity:1,transform:'none'}],{duration:280,easing:'cubic-bezier(.22,.7,.2,1)'});
+    d._anim.onfinish=d._anim.oncancel=function(){ body.style.overflow=''; d._anim=null; };
+  } else {
+    var h0=body.getBoundingClientRect().height; body.style.overflow='hidden';
+    d._anim=body.animate([{height:h0+'px',opacity:1},{height:'0px',opacity:0}],{duration:200,easing:'cubic-bezier(.4,0,.6,1)'});
+    d._anim.onfinish=function(){ d.open=false; body.style.overflow=''; d._anim=null; };
+    d._anim.oncancel=function(){ body.style.overflow=''; d._anim=null; };
+  }
+}, true);
+(function pillAutoHide(){
+  var pill=$('#savepill'); if(!pill) return; var lastY=window.pageYOffset||0, timer=null;
+  window.addEventListener('scroll', function(){
+    if(!MOTION || window.innerWidth>600) { pill.classList.remove('hide'); return; }
+    var y=window.pageYOffset||0, dy=y-lastY; lastY=y;
+    if(dy>6 && y>200) pill.classList.add('hide'); else if(dy<-6) pill.classList.remove('hide');
+    clearTimeout(timer); timer=setTimeout(function(){ pill.classList.remove('hide'); }, 900);
+  }, {passive:true});
+})();
 })();
 
 </script>
