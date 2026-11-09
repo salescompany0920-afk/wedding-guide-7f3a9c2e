@@ -484,6 +484,19 @@ br.m{display:none}
 .keep li{margin:2px 0}
 @media print{.keep{display:none}}
 
+/* 모바일 마감: 좁은 표는 가로 스크롤, 편지는 왼쪽 정렬(날짜·서명만 가운데) */
+table.tbl.form{min-width:760px}
+#cue-table table{min-width:620px}
+table.cases td.first{min-width:170px}
+@media (max-width:600px){
+  section.closing .letter p{text-align:left}
+  section.closing .letter p:nth-last-child(2),section.closing .letter p.sign{text-align:center}
+  .block h2{margin-bottom:.5em}
+  .og{padding:14px 16px}
+}
+@media print{table.tbl.form,#cue-table table{min-width:0}}
+table.tbl.form td:first-child,table.tbl.form th:first-child{white-space:nowrap;min-width:120px}
+
 </style>
 </head>
 <body>
@@ -738,7 +751,8 @@ br.m{display:none}
   <div class="prose letter">
     <p>준비하다 보면 지칠 때가 있어. 견적서가 쌓이고, 양가 의견이 갈리고, 그냥 살기에도 바쁜데 사소한 결정들이 쌓이고. 그러다 보면 왜 결혼하는지가 잠깐 흐려지기도 해. 아주 정상이고 모두가 겪었던 일이야. 군대처럼.</p>
     <p>그럴 때 기억하면 좋은 것 하나. 결혼식은 하루고, 결혼은 그다음 날부터 매일이잖아. 이 안내서의 항목은 전부 그 하루를 위한 것뿐이고, 두세 달 뒤면 아무도 그때 어땠는지 묻지도 않아. 남는 것은 두 사람이 그날 어떤 얼굴로 서 있었는지,<br>그리고 그 뒤로 어떻게 살아가는지.</p>
-    <p>몇 주간 조금이라도 도움이 되고자, 결혼을 진심으로 축하하며 만들어 봤어. 양이 많으니 선택이 필요할 때 그때그때 참고하고, 준비는 잘하되 준비에 지치는 날이 오면 이 페이지를 닫고 둘이 밥을 먹으세요. 그게 가장 중요한 준비일지도.<br>2027년 10월 10일에 봅시다.</p>
+    <p>생각보다 작업량이 많아졌네, 하다 보니까. 몇 주간 조금이라도 도움이 되고자, 결혼을 진심으로 축하하며 만들어 봤어. 양이 많으니 선택이 필요할 때 그때그때 참고하고, 준비는 잘하되 준비에 지치는 날이 오면 이 페이지를 닫고 둘이 밥을 먹으세요. 그게 가장 중요한 준비일지도.</p>
+    <p>2027년 10월 10일에 봅시다.</p>
     <p class="sign">WM</p>
   </div>
 </div></section>
