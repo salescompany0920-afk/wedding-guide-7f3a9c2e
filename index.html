@@ -469,6 +469,10 @@ details.more .kv{margin-top:4px}
 .xlsx .tn{max-width:40em}
 @media print{.og{break-inside:avoid}.origins{grid-template-columns:repeat(2,1fr)}}
 
+/* 모바일 전용 줄바꿈: br.m은 폰 폭에서만 줄을 바꾸고, PC에서는 공백 하나로 동작 */
+br.m{display:none}
+@media (max-width:600px){ br.m{display:inline} .dedication{font-size:.95rem;line-height:2.05} .dedication p{word-break:keep-all} }
+
 </style>
 </head>
 <body>
@@ -488,8 +492,8 @@ details.more .kv{margin-top:4px}
     <p class="phase-now" id="phase-now"></p>
   </div>
   <div class="dedication">
-    <p>회사 일로도 정신없을 텐데 고생하는 나의 소울메이트 웅진 형과,<br>10월의 가장 아름다운 신부 연재 씨에게.</p>
-    <p>결혼 준비는 할 일이 많고, 하다 보면 왜 하는지를 잊기 쉽습니다.<br>준비하는 동안 덜 헤매고 더 많이 웃으시라고. 결혼 축하의 선물로 두 사람에게 바칩니다.</p>
+    <p>회사 일로도 정신없을 텐데 고생하는 <br class="m">나의 소울메이트 웅진 형과,<br>10월의 가장 아름다운 신부 연재 씨에게.</p>
+    <p>결혼 준비는 할 일이 많고, 하다 보면 <br class="m">왜 하는지를 잊기 쉽습니다.<br>준비하는 동안 덜 헤매고 더 많이 웃으시라고. <br class="m">결혼 축하의 선물로 두 사람에게 바칩니다.</p>
     <p>이건 모를 때 참고하는 지표로만.<br>언제나 정답은 둘이 원하는 것으로.</p>
     <p class="sign">WM</p>
   </div>
